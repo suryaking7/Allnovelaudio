@@ -2,9 +2,42 @@
 <html>
 <head>
   <title>All Novel Audio</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      text-align: center;
+      font-family: Arial;
+    }
+    img {
+      width: 300px;
+      cursor: pointer;
+      margin-top: 50px;
+    }
+  </style>
 </head>
-<body>
-  <h1>Welcome to All Novel Audio</h1>
-  <p>Website live ho gayi hai 🚀</p>
+
+<body oncontextmenu="return false">
+
+<h2>Tap on Image to Play Audio</h2>
+
+<img src="cover.jpg" onclick="playAudio()">
+
+<audio id="audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  function playAudio() {
+    document.getElementById("audio").play();
+  }
+
+  document.addEventListener("keydown", function(e) {
+    if (e.ctrlKey || e.keyCode == 123) {
+      e.preventDefault();
+    }
+  });
+</script>
+
 </body>
 </html>
