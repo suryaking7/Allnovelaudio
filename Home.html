@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Novel Audio</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      text-align: center;
+      font-family: Arial;
+    }
+    img {
+      width: 300px;
+      cursor: pointer;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+<h2>Tap Image to Play Audio</h2>
+
+<img src="cover.jpg" onclick="playAudio()">
+
+<audio id="audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="logout()">Logout</button>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyC...TWBV",
+    authDomain: "allnovelaudio-d2282.firebaseapp.com",
+    projectId: "allnovelaudio-d2282",
+    storageBucket: "allnovelaudio-d2282.appspot.com",
+    messagingSenderId: "525510523414",
+    appId: "1:525510523414:web:76b05294a29ef1af5d337"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+  firebase.auth().onAuthStateChanged(user => {
+    if (!user) {
+      window.location.href = "index.html";
+    }
+  });
+
+  function playAudio() {
+    document.getElementById("audio").play();
+  }
+
+  function logout() {
+    firebase.auth().signOut().then(() => {
+      window.location.href = "index.html";
+    });
+  }
+</script>
+
+</body>
+</html>
